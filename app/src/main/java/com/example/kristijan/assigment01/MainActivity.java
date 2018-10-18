@@ -22,8 +22,10 @@ public class MainActivity extends AppCompatActivity {
 
         toDos = new ArrayList<ToDo>();
 
+        // todo start remove mock data
         toDos.add(new ToDo("Test 1"));
         toDos.add(new ToDo("Test 2"));
+        // todo end remove mock data
 
         todoListAdapter = new TodoListAdapter(this, toDos);
         todosList.setAdapter(todoListAdapter);

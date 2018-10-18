@@ -7,6 +7,14 @@
         android:id="@+id/todoList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_above="@id/addNewTaskButton"
         />
+
+    <Button
+        android:id="@+id/addNewTaskButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="@string/add_new" />
 
 </RelativeLayout>
