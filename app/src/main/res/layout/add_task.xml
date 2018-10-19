@@ -1,0 +1,19 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <EditText
+        android:id="@+id/addTodo"
+        android:layout_width="match_parent"
+        android:textSize="18sp"
+        android:padding="2sp"
+        android:inputType="text"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/submitTodoButton"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"/>
+</RelativeLayout>
