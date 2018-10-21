@@ -6,14 +6,34 @@
     <EditText
         android:id="@+id/addTodo"
         android:layout_width="match_parent"
-        android:textSize="18sp"
-        android:padding="2sp"
-        android:inputType="text"
-        android:layout_height="wrap_content" />
-
-    <Button
-        android:id="@+id/submitTodoButton"
-        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentBottom="true"/>
+        android:gravity="top|start"
+        android:inputType="textMultiLine"
+        android:padding="2sp"
+        android:layout_above="@id/addControls"
+        android:background="#FFFFFFFF"
+        android:textSize="18sp" />
+
+    <LinearLayout
+        android:id="@+id/addControls"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+
+        >
+        <Button
+            android:id="@+id/submitTodoButton"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/save" />
+        <Button
+            android:id="@+id/cancelAddButton"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cancel" />
+
+    </LinearLayout>
 </RelativeLayout>
