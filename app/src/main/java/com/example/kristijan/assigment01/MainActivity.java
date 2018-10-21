@@ -40,7 +40,6 @@ public class MainActivity extends Activity {
 
             @Override
             public void onClick(View v) {
-                // todo: start add new screen
                 Intent intent = new Intent(MainActivity.this, AddTask.class);
                 startActivity(intent);
             }

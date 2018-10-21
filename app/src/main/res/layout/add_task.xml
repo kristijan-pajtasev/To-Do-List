@@ -11,7 +11,7 @@
         android:inputType="textMultiLine"
         android:padding="2sp"
         android:layout_above="@id/addControls"
-        android:background="#FFFFFFFF"
+        android:background="#FFFFFFA5"
         android:textSize="18sp" />
 
     <LinearLayout
@@ -29,11 +29,12 @@
             android:layout_height="wrap_content"
             android:text="@string/save" />
         <Button
-            android:id="@+id/cancelAddButton"
+            android:id="@+id/cancelButton"
             android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/cancel" />
+            android:text="@string/cancel"
+            />
 
     </LinearLayout>
 </RelativeLayout>
