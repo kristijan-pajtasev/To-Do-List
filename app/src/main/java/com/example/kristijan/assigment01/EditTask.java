@@ -1,6 +1,7 @@
 package com.example.kristijan.assigment01;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,6 +17,9 @@ public class EditTask extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_task);
         Log.i("EDIT ACTIVITY: ", "EditTask activity started");
+
+        Intent intent = getIntent();
+        String id = intent.getExtras().getString("id");
 
         Button cancelButton = (Button)findViewById(R.id.cancelButton);
         Button saveButton = (Button)findViewById(R.id.saveButton);

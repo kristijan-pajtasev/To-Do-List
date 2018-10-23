@@ -42,6 +42,7 @@ public class MainActivity extends Activity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(MainActivity.this, EditTask.class);
+                intent.putExtra("ID", 1);
                 startActivity(intent);
             }
         });
