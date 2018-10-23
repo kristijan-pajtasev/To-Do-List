@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -35,6 +36,15 @@ public class MainActivity extends Activity {
 
         todoListAdapter = new TodoListAdapter(this, toDos);
         todosList.setAdapter(todoListAdapter);
+
+        todosList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(MainActivity.this, EditTask.class);
+                startActivity(intent);
+            }
+        });
 
         addNewButton.setOnClickListener(new OnClickListener() {
 

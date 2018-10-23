@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".AddTask" android:label="@string/app_name"></activity>
+        <activity android:name=".EditTask" android:label="@string/app_name"></activity>
     </application>
 
 </manifest>
