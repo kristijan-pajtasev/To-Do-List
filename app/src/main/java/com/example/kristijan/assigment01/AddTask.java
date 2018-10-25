@@ -1,7 +1,6 @@
 package com.example.kristijan.assigment01;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
@@ -22,8 +21,8 @@ public class AddTask extends Activity {
         setContentView(R.layout.add_task);
         Log.i("ADD ACTIVITY: ", "AddTask activity started");
 
-        Button cancelButton = (Button)findViewById(R.id.cancelButton);
-        Button saveButton = (Button)findViewById(R.id.saveButton);
+        Button cancelButton = (Button) findViewById(R.id.cancelButton);
+        Button saveButton = (Button) findViewById(R.id.saveButton);
 
         cancelButton.setOnClickListener(new OnClickListener() {
             @Override
