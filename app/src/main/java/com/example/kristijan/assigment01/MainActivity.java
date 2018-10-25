@@ -37,13 +37,7 @@ public class MainActivity extends Activity {
 //        cv.put("description", "some desc");
 //        sqLiteDatabase.insert("tasks", null, cv);
 
-        Cursor  cursor = sqLiteDatabase.rawQuery("select * from tasks",null);
-
-        ArrayList<ToDo> tasks = new ArrayList<ToDo>();
-        for(cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
-            // The Cursor is now set to the right position
-            tasks.add(new ToDo(cursor.getInt(0),cursor.getString(1)));
-        }
+        ArrayList<ToDo> tasks =  dbHelper.getTasks(sqLiteDatabase);
 
         todosList = (ListView)findViewById(R.id.todoList);
         addNewButton = (Button)findViewById(R.id.addNewTaskButton);
