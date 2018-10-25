@@ -32,7 +32,7 @@ public class MainActivity extends Activity {
         dbHelper = new DBHelper(this, "tasks.db", null, 1);
         sqLiteDatabase = dbHelper.getWritableDatabase();
 
-        ArrayList<ToDo> tasks =  dbHelper.getTasks(sqLiteDatabase);
+        final ArrayList<ToDo> tasks =  dbHelper.getTasks(sqLiteDatabase);
 
         todosList = (ListView)findViewById(R.id.todoList);
         addNewButton = (Button)findViewById(R.id.addNewTaskButton);
@@ -46,7 +46,8 @@ public class MainActivity extends Activity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(MainActivity.this, EditTask.class);
-                intent.putExtra("ID", 1);
+
+                intent.putExtra("ID", "" + tasks.get(position).getId());
                 startActivity(intent);
             }
         });

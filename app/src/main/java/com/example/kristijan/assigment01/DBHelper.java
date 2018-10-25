@@ -47,4 +47,11 @@ public class DBHelper extends SQLiteOpenHelper {
         cv.put("description", description);
         sqLiteDatabase.insert("tasks", null, cv);
     }
+
+    public ToDo getTask(SQLiteDatabase sqLiteDatabase, String id) {
+        Cursor cursor = sqLiteDatabase.rawQuery("select * from tasks where id=" + id,null);
+        cursor.moveToFirst();
+        ToDo task =new ToDo(cursor.getInt(0),cursor.getString(1));
+        return task;
+    }
 }
