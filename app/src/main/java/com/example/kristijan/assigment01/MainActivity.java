@@ -76,7 +76,7 @@ public class MainActivity extends Activity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(MainActivity.this, EditTask.class);
 
-                intent.putExtra("ID", "" + tasks.get(position).getId());
+                intent.putExtra("ID", Integer.toString(tasks.get(position).getId()));
                 startActivity(intent);
             }
         });
