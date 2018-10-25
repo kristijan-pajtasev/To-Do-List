@@ -1,9 +1,7 @@
 package com.example.kristijan.assigment01;
 
 import android.app.Activity;
-import android.content.ContentValues;
 import android.content.Intent;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -13,13 +11,11 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends Activity {
 
     private ListView todosList;
     private TodoListAdapter todoListAdapter;
-//    private ArrayList<ToDo> toDos;
     private Button addNewButton;
     private DBHelper dbHelper;
     private SQLiteDatabase sqLiteDatabase;
