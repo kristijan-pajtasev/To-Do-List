@@ -1,7 +1,10 @@
 package com.example.kristijan.assigment01;
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -16,25 +19,37 @@ public class MainActivity extends Activity {
 
     private ListView todosList;
     private TodoListAdapter todoListAdapter;
-    private ArrayList<ToDo> toDos;
+//    private ArrayList<ToDo> toDos;
     private Button addNewButton;
+    private DBHelper dbHelper;
+    private SQLiteDatabase sqLiteDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.todo_main);
 
+        dbHelper = new DBHelper(this, "tasks.db", null, 1);
+        sqLiteDatabase = dbHelper.getWritableDatabase();
+
+
+//        ContentValues cv = new ContentValues();
+//        cv.put("description", "some desc");
+//        sqLiteDatabase.insert("tasks", null, cv);
+
+        Cursor  cursor = sqLiteDatabase.rawQuery("select * from tasks",null);
+
+        ArrayList<ToDo> tasks = new ArrayList<ToDo>();
+        for(cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
+            // The Cursor is now set to the right position
+            tasks.add(new ToDo(cursor.getInt(0),cursor.getString(1)));
+        }
+
         todosList = (ListView)findViewById(R.id.todoList);
         addNewButton = (Button)findViewById(R.id.addNewTaskButton);
 
-        toDos = new ArrayList<ToDo>();
 
-        // todo start remove mock data
-        toDos.add(new ToDo("Test 1"));
-        toDos.add(new ToDo("Test 2"));
-        // todo end remove mock data
-
-        todoListAdapter = new TodoListAdapter(this, toDos);
+        todoListAdapter = new TodoListAdapter(this, tasks);
         todosList.setAdapter(todoListAdapter);
 
         todosList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
