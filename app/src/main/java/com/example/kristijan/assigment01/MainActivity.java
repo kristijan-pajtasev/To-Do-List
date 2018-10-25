@@ -32,11 +32,6 @@ public class MainActivity extends Activity {
         dbHelper = new DBHelper(this, "tasks.db", null, 1);
         sqLiteDatabase = dbHelper.getWritableDatabase();
 
-
-//        ContentValues cv = new ContentValues();
-//        cv.put("description", "some desc");
-//        sqLiteDatabase.insert("tasks", null, cv);
-
         ArrayList<ToDo> tasks =  dbHelper.getTasks(sqLiteDatabase);
 
         todosList = (ListView)findViewById(R.id.todoList);

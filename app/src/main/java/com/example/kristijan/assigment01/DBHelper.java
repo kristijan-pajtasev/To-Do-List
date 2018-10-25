@@ -42,4 +42,9 @@ public class DBHelper extends SQLiteOpenHelper {
         return tasks;
     }
 
+    public void createTask(SQLiteDatabase sqLiteDatabase, String description) {
+        ContentValues cv = new ContentValues();
+        cv.put("description", description);
+        sqLiteDatabase.insert("tasks", null, cv);
+    }
 }
