@@ -11,7 +11,10 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class AddTask extends Activity {
-    private EditText taskContent;
+    EditText taskContent = (EditText) findViewById(R.id.taskContent);
+
+    final DBHelper dbHelper = new DBHelper(this, "tasks.db", null, 1);
+    final SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,17 +22,8 @@ public class AddTask extends Activity {
         setContentView(R.layout.add_task);
         Log.i("ADD ACTIVITY: ", "AddTask activity started");
 
-        final DBHelper dbHelper = new DBHelper(this, "tasks.db", null, 1);
-        final SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
-
-
-//        ContentValues cv = new ContentValues();
-//        cv.put("description", "some desc");
-//        sqLiteDatabase.insert("tasks", null, cv);
-
         Button cancelButton = (Button)findViewById(R.id.cancelButton);
         Button saveButton = (Button)findViewById(R.id.saveButton);
-        taskContent = (EditText) findViewById(R.id.taskContent);
 
         cancelButton.setOnClickListener(new OnClickListener() {
             @Override
