@@ -32,12 +32,24 @@ public class MainActivity extends Activity {
         dbHelper = new DBHelper(this, "tasks.db", null, 1);
         sqLiteDatabase = dbHelper.getWritableDatabase();
 
-        final ArrayList<ToDo> tasks =  dbHelper.getTasks(sqLiteDatabase);
-
         todosList = (ListView)findViewById(R.id.todoList);
         addNewButton = (Button)findViewById(R.id.addNewTaskButton);
 
+        setTasksList();
 
+        addNewButton.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, AddTask.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void setTasksList() {
+
+        final ArrayList<ToDo> tasks =  dbHelper.getTasks(sqLiteDatabase);
         todoListAdapter = new TodoListAdapter(this, tasks);
         todosList.setAdapter(todoListAdapter);
 
@@ -51,15 +63,6 @@ public class MainActivity extends Activity {
                 startActivity(intent);
             }
         });
-
-        addNewButton.setOnClickListener(new OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, AddTask.class);
-                startActivity(intent);
-            }
-        });
     }
 
     @Override
@@ -67,18 +70,6 @@ public class MainActivity extends Activity {
         super.onResume();
         final ArrayList<ToDo> tasks =  dbHelper.getTasks(sqLiteDatabase);
 
-        todoListAdapter = new TodoListAdapter(this, tasks);
-        todosList.setAdapter(todoListAdapter);
-
-        todosList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(MainActivity.this, EditTask.class);
-
-                intent.putExtra("ID", Integer.toString(tasks.get(position).getId()));
-                startActivity(intent);
-            }
-        });
+        setTasksList();
     }
 }
