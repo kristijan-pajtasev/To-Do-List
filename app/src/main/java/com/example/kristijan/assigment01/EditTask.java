@@ -23,7 +23,7 @@ public class EditTask extends Activity {
         final SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
 
         Intent intent = getIntent();
-        String id = intent.getExtras().getString("ID");
+        final String id = intent.getExtras().getString("ID");
 
         ToDo task = dbHelper.getTask(sqLiteDatabase, id);
 
@@ -44,7 +44,9 @@ public class EditTask extends Activity {
         saveButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i("ADD ACTIVITY: ", "Save new task");
+                Log.i("EDIT ACTIVITY: ", "Edit task");
+                String content = taskContent.getText().toString();
+                dbHelper.updateTask(sqLiteDatabase, id, content);
                 finish();
             }
         });

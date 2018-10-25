@@ -54,4 +54,11 @@ public class DBHelper extends SQLiteOpenHelper {
         ToDo task =new ToDo(cursor.getInt(0),cursor.getString(1));
         return task;
     }
+
+    public void updateTask(SQLiteDatabase sqLiteDatabase, String id, String description) {
+
+        ContentValues cv = new ContentValues();
+        cv.put("description", description);
+        sqLiteDatabase.update("tasks", cv, "id="+ id, null);
+    }
 }
