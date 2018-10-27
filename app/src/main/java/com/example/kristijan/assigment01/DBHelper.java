@@ -51,8 +51,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public ToDo getTask(SQLiteDatabase sqLiteDatabase, String id) {
         Cursor cursor = sqLiteDatabase.rawQuery("select * from tasks where id=" + id,null);
         cursor.moveToFirst();
-        ToDo task =new ToDo(cursor.getInt(0),cursor.getString(1));
-        return task;
+        return new ToDo(cursor.getInt(0),cursor.getString(1));
     }
 
     public void updateTask(SQLiteDatabase sqLiteDatabase, String id, String description) {
@@ -62,3 +61,4 @@ public class DBHelper extends SQLiteOpenHelper {
         sqLiteDatabase.update("tasks", cv, "id="+ id, null);
     }
 }
+// TODO set timestamp created
