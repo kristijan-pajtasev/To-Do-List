@@ -2,6 +2,7 @@ package com.example.kristijan.assigment01;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -62,6 +63,17 @@ public class TodoListAdapter extends BaseAdapter {
                     AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
 
                     alertDialog.setMessage("Delete task?");
+
+                    alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            // User clicked OK button
+                        }
+                    });
+                    alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            // User cancelled the dialog
+                        }
+                    });
 
                     AlertDialog dialog = alertDialog.create();
 
