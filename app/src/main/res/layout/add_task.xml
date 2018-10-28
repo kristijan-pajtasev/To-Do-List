@@ -20,21 +20,25 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_alignParentBottom="true"
-
         >
-        <Button
-            android:id="@+id/saveButton"
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/save" />
+
         <Button
             android:id="@+id/cancelButton"
             android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="#FFFFFFFF"
+            android:background="@drawable/cancel_button"
             android:text="@string/cancel"
             />
 
+        <Button
+            android:id="@+id/saveButton"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button"
+            android:textColor="#FFFFFFFF"
+            android:text="@string/save" />
     </LinearLayout>
 </RelativeLayout>
