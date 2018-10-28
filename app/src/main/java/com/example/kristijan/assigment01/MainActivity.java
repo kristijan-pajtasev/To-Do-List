@@ -34,8 +34,8 @@ public class MainActivity extends Activity {
         dbHelper = new DBHelper(this, "tasks.db", null, 1);
         sqLiteDatabase = dbHelper.getWritableDatabase();
 
-        tasksList = (ListView)findViewById(R.id.todoList);
-        Button addNewButton = (Button)findViewById(R.id.addNewTaskButton);
+        tasksList = findViewById(R.id.todoList);
+        Button addNewButton = findViewById(R.id.addNewTaskButton);
 
         setTasksList();
 
