@@ -51,9 +51,9 @@ public class TodoListAdapter extends BaseAdapter {
             LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.todo_item, parent, false);
 
-            viewHolder.todoDescription = (TextView)convertView.findViewById(R.id.todoDescription);
+            viewHolder.todoDescription = convertView.findViewById(R.id.todoDescription);
 
-            final Button deleteButton = (Button)convertView.findViewById(R.id.deleteTask);
+            final Button deleteButton = convertView.findViewById(R.id.deleteTask);
             deleteButton.setTag(position);
 
             deleteButton.setOnClickListener(new View.OnClickListener() {
