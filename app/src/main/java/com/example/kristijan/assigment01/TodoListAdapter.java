@@ -39,7 +39,7 @@ public class TodoListAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int position) {
-        return position;
+        return toDos.get(position).getId();
     }
 
     @Override
