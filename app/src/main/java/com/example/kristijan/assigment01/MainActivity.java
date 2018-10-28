@@ -64,8 +64,6 @@ public class MainActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-        final ArrayList<ToDo> tasks =  dbHelper.getTasks(sqLiteDatabase);
-
         setTasksList();
     }
 }

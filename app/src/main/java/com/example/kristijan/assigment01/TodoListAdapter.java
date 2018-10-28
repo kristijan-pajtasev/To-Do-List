@@ -3,6 +3,7 @@ package com.example.kristijan.assigment01;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,13 +39,12 @@ public class TodoListAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int position) {
-        // todo: db item id
         return position;
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder viewHolder;
+    public View getView(final int position, View convertView, ViewGroup parent) {
+        final ViewHolder viewHolder;
         if(convertView == null) {
             viewHolder = new ViewHolder();
 
@@ -53,11 +53,13 @@ public class TodoListAdapter extends BaseAdapter {
 
             viewHolder.todoDescription = (TextView)convertView.findViewById(R.id.todoDescription);
 
-            Button deleteButton = (Button)convertView.findViewById(R.id.deleteTask);
+            final Button deleteButton = (Button)convertView.findViewById(R.id.deleteTask);
+            deleteButton.setTag(position);
 
             deleteButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
                     Log.i("DELETE ACTIVITY: ", "Delete activity button clicked");
 
                     AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
@@ -66,7 +68,13 @@ public class TodoListAdapter extends BaseAdapter {
 
                     alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
-                            // User clicked OK button
+
+                            final DBHelper dbHelper = new DBHelper(context, "tasks.db", null, 1);
+                            final SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
+                            Integer itemPosition = (Integer)deleteButton.getTag();
+                            dbHelper.deleteItem(sqLiteDatabase, toDos.get(position).getId());
+                            toDos.remove(itemPosition);
+//                            adapter.notifyDataSetChanged();
                         }
                     });
                     alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {

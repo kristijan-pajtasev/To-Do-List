@@ -60,5 +60,8 @@ public class DBHelper extends SQLiteOpenHelper {
         cv.put("description", description);
         sqLiteDatabase.update("tasks", cv, "id="+ id, null);
     }
+
+    public void deleteItem(SQLiteDatabase sqLiteDatabase, int id) {
+        sqLiteDatabase.delete("tasks", "id="+ id, null);
+    }
 }
-// TODO set timestamp created
