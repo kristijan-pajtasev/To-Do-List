@@ -40,6 +40,7 @@ public class MainActivity extends Activity {
         setTasksList();
 
         addNewButton.setOnClickListener(addNewTaskListener);
+
     }
 
     private void setTasksList() {

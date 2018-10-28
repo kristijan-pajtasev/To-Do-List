@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class TodoListAdapter extends BaseAdapter {
     private ArrayList<Task> tasks;
     private Context context;
-
+    private TodoListAdapter adapter;
     static class ViewHolder {
         public TextView todoDescription;
     }
@@ -25,6 +25,7 @@ public class TodoListAdapter extends BaseAdapter {
     public TodoListAdapter(Context context, ArrayList<Task> tasks) {
         this.tasks = tasks;
         this.context = context;
+        adapter = this;
     }
 
     @Override
@@ -72,9 +73,11 @@ public class TodoListAdapter extends BaseAdapter {
                             final DBHelper dbHelper = new DBHelper(context, "tasks.db", null, 1);
                             final SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
                             Integer itemPosition = (Integer)deleteButton.getTag();
-                            dbHelper.deleteItem(sqLiteDatabase, tasks.get(position).getId());
-                            tasks.remove(itemPosition);
-//                            adapter.notifyDataSetChanged();
+                            dbHelper.deleteItem(sqLiteDatabase, tasks.get(itemPosition).getId());
+                            adapter.tasks.remove((int)itemPosition);
+                            adapter.notifyDataSetChanged();
+
+
                         }
                     });
                     alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
