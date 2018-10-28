@@ -15,31 +15,31 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class TodoListAdapter extends BaseAdapter {
-    private ArrayList<ToDo> toDos;
+    private ArrayList<Task> tasks;
     private Context context;
 
     static class ViewHolder {
         public TextView todoDescription;
     }
 
-    public TodoListAdapter(Context context, ArrayList<ToDo> toDos) {
-        this.toDos = toDos;
+    public TodoListAdapter(Context context, ArrayList<Task> tasks) {
+        this.tasks = tasks;
         this.context = context;
     }
 
     @Override
     public int getCount() {
-        return toDos.size();
+        return tasks.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return toDos.get(position);
+        return tasks.get(position);
     }
 
     @Override
     public long getItemId(int position) {
-        return toDos.get(position).getId();
+        return tasks.get(position).getId();
     }
 
     @Override
@@ -72,8 +72,8 @@ public class TodoListAdapter extends BaseAdapter {
                             final DBHelper dbHelper = new DBHelper(context, "tasks.db", null, 1);
                             final SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
                             Integer itemPosition = (Integer)deleteButton.getTag();
-                            dbHelper.deleteItem(sqLiteDatabase, toDos.get(position).getId());
-                            toDos.remove(itemPosition);
+                            dbHelper.deleteItem(sqLiteDatabase, tasks.get(position).getId());
+                            tasks.remove(itemPosition);
 //                            adapter.notifyDataSetChanged();
                         }
                     });
@@ -94,7 +94,7 @@ public class TodoListAdapter extends BaseAdapter {
             viewHolder = (ViewHolder)convertView.getTag();
         }
 
-        viewHolder.todoDescription.setText(toDos.get(position).getText());
+        viewHolder.todoDescription.setText(tasks.get(position).getText());
 
         return convertView;
     }

@@ -25,7 +25,7 @@ public class EditTask extends Activity {
         Intent intent = getIntent();
         final String id = intent.getExtras().getString("ID");
 
-        ToDo task = dbHelper.getTask(sqLiteDatabase, id);
+        Task task = dbHelper.getTask(sqLiteDatabase, id);
 
         taskContent = (EditText) findViewById(R.id.taskContent);
         Button cancelButton = (Button)findViewById(R.id.cancelButton);

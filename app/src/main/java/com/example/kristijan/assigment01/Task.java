@@ -1,10 +1,10 @@
 package com.example.kristijan.assigment01;
 
-public class ToDo {
+public class Task {
     private String text;
     private int id;
 
-    public ToDo(int id, String text) {
+    public Task(int id, String text) {
         this.text = text;
         this.id = id;
     }

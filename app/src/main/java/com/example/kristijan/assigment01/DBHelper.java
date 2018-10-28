@@ -31,12 +31,12 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE);
     }
 
-    public ArrayList<ToDo> getTasks(SQLiteDatabase sqLiteDatabase) {
+    public ArrayList<Task> getTasks(SQLiteDatabase sqLiteDatabase) {
         Cursor cursor = sqLiteDatabase.rawQuery("select * from tasks order by created DESC",null);
 
-        ArrayList<ToDo> tasks = new ArrayList<ToDo>();
+        ArrayList<Task> tasks = new ArrayList<Task>();
         for(cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
-            tasks.add(new ToDo(cursor.getInt(0),cursor.getString(1)));
+            tasks.add(new Task(cursor.getInt(0),cursor.getString(1)));
         }
 
         return tasks;
@@ -48,10 +48,10 @@ public class DBHelper extends SQLiteOpenHelper {
         sqLiteDatabase.insert("tasks", null, cv);
     }
 
-    public ToDo getTask(SQLiteDatabase sqLiteDatabase, String id) {
+    public Task getTask(SQLiteDatabase sqLiteDatabase, String id) {
         Cursor cursor = sqLiteDatabase.rawQuery("select * from tasks where id=" + id,null);
         cursor.moveToFirst();
-        return new ToDo(cursor.getInt(0),cursor.getString(1));
+        return new Task(cursor.getInt(0),cursor.getString(1));
     }
 
     public void updateTask(SQLiteDatabase sqLiteDatabase, String id, String description) {
