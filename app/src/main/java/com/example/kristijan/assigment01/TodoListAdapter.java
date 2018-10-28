@@ -1,10 +1,12 @@
 package com.example.kristijan.assigment01;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -48,6 +50,15 @@ public class TodoListAdapter extends BaseAdapter {
             convertView = inflater.inflate(R.layout.todo_item, parent, false);
 
             viewHolder.todoDescription = (TextView)convertView.findViewById(R.id.todoDescription);
+
+            Button deleteButton = (Button)convertView.findViewById(R.id.deleteTask);
+
+            deleteButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.i("DELETE ACTIVITY: ", "Delete activity button clicked");
+                }
+            });
 
             convertView.setTag(viewHolder);
         } else {
