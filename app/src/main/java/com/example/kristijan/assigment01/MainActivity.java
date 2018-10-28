@@ -14,11 +14,17 @@ import java.util.ArrayList;
 
 public class MainActivity extends Activity {
 
-    private ListView todosList;
-    private TodoListAdapter todoListAdapter;
-    private Button addNewButton;
+    private ListView tasksList;
     private DBHelper dbHelper;
     private SQLiteDatabase sqLiteDatabase;
+
+    private OnClickListener addNewTaskListener = new OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(MainActivity.this, AddTask.class);
+            startActivity(intent);
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,28 +34,21 @@ public class MainActivity extends Activity {
         dbHelper = new DBHelper(this, "tasks.db", null, 1);
         sqLiteDatabase = dbHelper.getWritableDatabase();
 
-        todosList = (ListView)findViewById(R.id.todoList);
-        addNewButton = (Button)findViewById(R.id.addNewTaskButton);
+        tasksList = (ListView)findViewById(R.id.todoList);
+        Button addNewButton = (Button)findViewById(R.id.addNewTaskButton);
 
         setTasksList();
 
-        addNewButton.setOnClickListener(new OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, AddTask.class);
-                startActivity(intent);
-            }
-        });
+        addNewButton.setOnClickListener(addNewTaskListener);
     }
 
     private void setTasksList() {
 
         final ArrayList<ToDo> tasks =  dbHelper.getTasks(sqLiteDatabase);
-        todoListAdapter = new TodoListAdapter(this, tasks);
-        todosList.setAdapter(todoListAdapter);
+        TodoListAdapter todoListAdapter = new TodoListAdapter(this, tasks);
+        tasksList.setAdapter(todoListAdapter);
 
-        todosList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        tasksList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
