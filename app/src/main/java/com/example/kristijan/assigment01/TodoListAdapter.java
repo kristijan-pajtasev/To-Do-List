@@ -1,5 +1,6 @@
 package com.example.kristijan.assigment01;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -57,6 +58,14 @@ public class TodoListAdapter extends BaseAdapter {
                 @Override
                 public void onClick(View v) {
                     Log.i("DELETE ACTIVITY: ", "Delete activity button clicked");
+
+                    AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
+
+                    alertDialog.setMessage("Delete task?");
+
+                    AlertDialog dialog = alertDialog.create();
+
+                    dialog.show();
                 }
             });
 
