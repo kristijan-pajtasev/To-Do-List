@@ -6,17 +6,20 @@
 
     <TextView
         android:id="@+id/todoDescription"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:textSize="18sp"
         android:padding="2sp"
         android:layout_height="wrap_content"
-        android:layout_weight="1" />
+        android:scrollHorizontally="true"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:layout_weight="5" />
 
     <Button
         android:id="@+id/deleteTask"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Delete"
+        android:text="@string/delete"
         android:layout_weight="1"
         />
 
