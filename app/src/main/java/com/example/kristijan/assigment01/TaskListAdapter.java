@@ -19,7 +19,7 @@ public class TaskListAdapter extends BaseAdapter {
     private Context context;
     private TaskListAdapter adapter;
     static class ViewHolder {
-        public TextView todoDescription;
+        public TextView taskDescription;
     }
 
     public TaskListAdapter(Context context, ArrayList<Task> tasks) {
@@ -50,7 +50,7 @@ public class TaskListAdapter extends BaseAdapter {
             viewHolder = new ViewHolder();
             LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.todo_item, parent, false);
-            viewHolder.todoDescription = convertView.findViewById(R.id.todoDescription);
+            viewHolder.taskDescription = convertView.findViewById(R.id.todoDescription);
 
             final Button deleteButton = convertView.findViewById(R.id.deleteTask);
             deleteButton.setTag(position);
@@ -68,7 +68,7 @@ public class TaskListAdapter extends BaseAdapter {
             viewHolder = (ViewHolder)convertView.getTag();
         }
 
-        viewHolder.todoDescription.setText(tasks.get(position).getText());
+        viewHolder.taskDescription.setText(tasks.get(position).getText());
 
         return convertView;
     }
