@@ -21,9 +21,9 @@ public class AddTask extends Activity {
         final DBHelper dbHelper = new DBHelper(this, "tasks.db", null, 1);
         final SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
 
-        taskContent = (EditText) findViewById(R.id.taskContent);
-        Button cancelButton = (Button) findViewById(R.id.cancelButton);
-        Button saveButton = (Button) findViewById(R.id.saveButton);
+        taskContent = findViewById(R.id.taskContent);
+        Button cancelButton = findViewById(R.id.cancelButton);
+        Button saveButton = findViewById(R.id.saveButton);
 
         cancelButton.setOnClickListener(new OnClickListener() {
             @Override

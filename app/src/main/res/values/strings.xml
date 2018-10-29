@@ -3,4 +3,7 @@
     <string name="add_new">Add Task</string>
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
+    <string name="deleteTaskDialog">Delete task?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 </resources>

@@ -76,9 +76,9 @@ public class TaskListAdapter extends BaseAdapter {
     private void createDialog(final Button deleteButton) {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
 
-        alertDialog.setMessage("Delete task?");
+        alertDialog.setMessage(R.string.deleteTaskDialog);
 
-        alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+        alertDialog.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 final DBHelper dbHelper = new DBHelper(context, "tasks.db", null, 1);
                 final SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
@@ -88,7 +88,7 @@ public class TaskListAdapter extends BaseAdapter {
                 adapter.notifyDataSetChanged();
             }
         });
-        alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+        alertDialog.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
             }
         });
