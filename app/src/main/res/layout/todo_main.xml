@@ -15,6 +15,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:text="@string/add_new" />
+        android:background="@drawable/add_task_button" />
 
 </RelativeLayout>
