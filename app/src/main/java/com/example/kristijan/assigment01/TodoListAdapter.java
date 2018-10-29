@@ -63,32 +63,7 @@ public class TodoListAdapter extends BaseAdapter {
 
                     Log.i("DELETE ACTIVITY: ", "Delete activity button clicked");
 
-                    AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
-
-                    alertDialog.setMessage("Delete task?");
-
-                    alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-
-                            final DBHelper dbHelper = new DBHelper(context, "tasks.db", null, 1);
-                            final SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
-                            Integer itemPosition = (Integer)deleteButton.getTag();
-                            dbHelper.deleteItem(sqLiteDatabase, tasks.get(itemPosition).getId());
-                            adapter.tasks.remove((int)itemPosition);
-                            adapter.notifyDataSetChanged();
-
-
-                        }
-                    });
-                    alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            // User cancelled the dialog
-                        }
-                    });
-
-                    AlertDialog dialog = alertDialog.create();
-
-                    dialog.show();
+                    createDialog(deleteButton);
                 }
             });
 
@@ -100,5 +75,33 @@ public class TodoListAdapter extends BaseAdapter {
         viewHolder.todoDescription.setText(tasks.get(position).getText());
 
         return convertView;
+    }
+
+    private void createDialog(final Button deleteButton) {
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
+
+        alertDialog.setMessage("Delete task?");
+
+        alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+
+                final DBHelper dbHelper = new DBHelper(context, "tasks.db", null, 1);
+                final SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
+                Integer itemPosition = (Integer)deleteButton.getTag();
+                dbHelper.deleteItem(sqLiteDatabase, tasks.get(itemPosition).getId());
+                adapter.tasks.remove((int)itemPosition);
+                adapter.notifyDataSetChanged();
+
+
+            }
+        });
+        alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+            }
+        });
+
+        AlertDialog dialog = alertDialog.create();
+
+        dialog.show();
     }
 }
