@@ -48,17 +48,6 @@ public class MainActivity extends Activity {
         final ArrayList<Task> tasks =  dbHelper.getTasks(sqLiteDatabase);
         TaskListAdapter taskListAdapter = new TaskListAdapter(this, tasks);
         tasksList.setAdapter(taskListAdapter);
-
-        tasksList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(MainActivity.this, EditTask.class);
-
-                intent.putExtra("ID", "" + tasks.get(position).getId());
-                startActivity(intent);
-            }
-        });
     }
 
     @Override

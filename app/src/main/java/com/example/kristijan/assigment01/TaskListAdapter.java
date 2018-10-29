@@ -3,6 +3,7 @@ package com.example.kristijan.assigment01;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -50,7 +51,22 @@ public class TaskListAdapter extends BaseAdapter {
             viewHolder = new ViewHolder();
             LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.todo_item, parent, false);
-            viewHolder.taskDescription = convertView.findViewById(R.id.todoDescription);
+            viewHolder.taskDescription = convertView.findViewById(R.id.taskDescription);
+
+            TextView taskContent = convertView.findViewById(R.id.taskDescription);
+            taskContent.setTag(position);
+
+            taskContent.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.i("LIST ADAPTER: ", "Handle details click");
+                    Intent intent = new Intent(context, EditTask.class);
+
+                    intent.putExtra("ID", "" + tasks.get(position).getId());
+                    context.startActivity(intent);
+                }
+            });
+
 
             final Button deleteButton = convertView.findViewById(R.id.deleteTask);
             deleteButton.setTag(position);
