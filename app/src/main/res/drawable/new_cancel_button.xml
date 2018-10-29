@@ -9,7 +9,7 @@
             android:left="0px"
             android:right="0px"
             android:top="0px" />
-        <solid android:color="#FFC62828" />
+        <solid android:color="#FFCFD8DC" />
     </shape>
 </item>
 <item

@@ -21,7 +21,7 @@
             <!--<size-->
             <!--android:width="integer"-->
             <!--android:height="integer" />-->
-            <solid android:color="#FF1565C0" />
+            <solid android:color="#FFDCEDC8" />
             <!--<stroke-->
             <!--android:width="integer"-->
             <!--android:color="color"-->
