@@ -80,15 +80,12 @@ public class TaskListAdapter extends BaseAdapter {
 
         alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
-
                 final DBHelper dbHelper = new DBHelper(context, "tasks.db", null, 1);
                 final SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
                 Integer itemPosition = (Integer)deleteButton.getTag();
                 dbHelper.deleteItem(sqLiteDatabase, tasks.get(itemPosition).getId());
                 adapter.tasks.remove((int)itemPosition);
                 adapter.notifyDataSetChanged();
-
-
             }
         });
         alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
