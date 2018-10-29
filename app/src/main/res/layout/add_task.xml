@@ -26,10 +26,9 @@
             android:id="@+id/cancelButton"
             android:layout_weight="1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:textColor="#FFFFFFFF"
-            android:background="@drawable/cancel_button"
-            android:text="@string/cancel"
+            android:layout_height="wrap_content"
+            android:background="@drawable/new_cancel_button"
             />
 
         <Button
@@ -37,8 +36,8 @@
             android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/button"
+            android:background="@drawable/new_button"
             android:textColor="#FFFFFFFF"
-            android:text="@string/save" />
+            />
     </LinearLayout>
 </RelativeLayout>
