@@ -46,8 +46,8 @@ public class MainActivity extends Activity {
     private void setTasksList() {
 
         final ArrayList<Task> tasks =  dbHelper.getTasks(sqLiteDatabase);
-        TodoListAdapter todoListAdapter = new TodoListAdapter(this, tasks);
-        tasksList.setAdapter(todoListAdapter);
+        TaskListAdapter taskListAdapter = new TaskListAdapter(this, tasks);
+        tasksList.setAdapter(taskListAdapter);
 
         tasksList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 

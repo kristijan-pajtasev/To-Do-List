@@ -14,15 +14,15 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class TodoListAdapter extends BaseAdapter {
+public class TaskListAdapter extends BaseAdapter {
     private ArrayList<Task> tasks;
     private Context context;
-    private TodoListAdapter adapter;
+    private TaskListAdapter adapter;
     static class ViewHolder {
         public TextView todoDescription;
     }
 
-    public TodoListAdapter(Context context, ArrayList<Task> tasks) {
+    public TaskListAdapter(Context context, ArrayList<Task> tasks) {
         this.tasks = tasks;
         this.context = context;
         adapter = this;
@@ -48,10 +48,8 @@ public class TodoListAdapter extends BaseAdapter {
         final ViewHolder viewHolder;
         if(convertView == null) {
             viewHolder = new ViewHolder();
-
             LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.todo_item, parent, false);
-
             viewHolder.todoDescription = convertView.findViewById(R.id.todoDescription);
 
             final Button deleteButton = convertView.findViewById(R.id.deleteTask);
@@ -60,9 +58,7 @@ public class TodoListAdapter extends BaseAdapter {
             deleteButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
-                    Log.i("DELETE ACTIVITY: ", "Delete activity button clicked");
-
+                    Log.i("LIST ADAPTER: ", "Handle delete button click");
                     createDialog(deleteButton);
                 }
             });
