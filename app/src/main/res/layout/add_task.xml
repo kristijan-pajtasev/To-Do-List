@@ -48,13 +48,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/new_cancel_button" />
+            android:background="@drawable/cancel_button" />
 
         <Button
             android:id="@+id/saveButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/new_button" />
+            android:background="@drawable/save_button" />
     </LinearLayout>
 </RelativeLayout>
