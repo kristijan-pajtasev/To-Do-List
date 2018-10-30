@@ -3,11 +3,41 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <LinearLayout
+        android:id="@+id/taskStatusChooser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentTop="true"
+        >
+
+        <Button
+            android:id="@+id/pendingTasksButton"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:textColor="#FFFFFFFF"
+            android:layout_height="wrap_content"
+            android:text="Pending"
+            android:background="@drawable/new_cancel_button"
+            />
+
+        <Button
+            android:id="@+id/completedTasksButton"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/new_cancel_button"
+            android:text="Completed"
+            android:textColor="#FFFFFFFF"
+            />
+    </LinearLayout>
+
     <ListView
         android:id="@+id/todoList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/addNewTaskButton"
+        android:layout_below="@id/taskStatusChooser"
         />
 
     <Button

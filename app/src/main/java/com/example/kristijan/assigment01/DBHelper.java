@@ -16,6 +16,7 @@ public class DBHelper extends SQLiteOpenHelper {
     final String CREATE_TABLE = "create table tasks(" +
             "id integer primary key autoincrement, " +
             "task string," +
+            "completed integer default 0," +
             "created datetime default current_timestamp" +
             ")";
     final String DROP_TABLE = "drop table tasks";
@@ -43,10 +44,25 @@ public class DBHelper extends SQLiteOpenHelper {
 
     /**
      * @param sqLiteDatabase
-     * @return all tasks in format <code>ArrayList<Task></code>
+     * @return all uncompleted tasks in format <code>ArrayList<Task></code>
      */
     public ArrayList<Task> getTasks(SQLiteDatabase sqLiteDatabase) {
-        Cursor cursor = sqLiteDatabase.rawQuery("select * from tasks order by created DESC",null);
+        Cursor cursor = sqLiteDatabase.rawQuery("select * from tasks where completed='0' order by created DESC",null);
+
+        ArrayList<Task> tasks = new ArrayList<Task>();
+        for(cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
+            tasks.add(new Task(cursor.getInt(0),cursor.getString(1)));
+        }
+
+        return tasks;
+    }
+
+    /**
+     * @param sqLiteDatabase
+     * @return completed tasks in format <code>ArrayList<Task></code>
+     */
+    public ArrayList<Task> getCompletedTasks(SQLiteDatabase sqLiteDatabase) {
+        Cursor cursor = sqLiteDatabase.rawQuery("select * from tasks where completed='1' order by created DESC",null);
 
         ArrayList<Task> tasks = new ArrayList<Task>();
         for(cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
