@@ -9,10 +9,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.util.ArrayList;
 
 /**
- * @class DBHelper
- * @author Kristijan Pajtasev
- *
  * Helper class for interaction with SQLite database.
+ * @author Kristijan Pajtasev
  */
 public class DBHelper extends SQLiteOpenHelper {
     final String CREATE_TABLE = "create table tasks(" +

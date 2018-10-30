@@ -1,9 +1,8 @@
 package com.example.kristijan.assigment01;
 
 /**
- * @class Task
- * @author Kristijan Pajtasev
  * Model class for database and list view.
+ * @author Kristijan Pajtasev
  */
 public class Task {
     private String text;

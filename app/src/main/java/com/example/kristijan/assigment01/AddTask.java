@@ -11,9 +11,8 @@ import android.widget.EditText;
 
 
 /**
- * @class AddTask
- * @author Kristijan Pajtasev
  * Activity for creating new task. Uses dbHelper for storing task into sqlite database.
+ * @author Kristijan Pajtasev
  */
 public class AddTask extends Activity {
     EditText taskContent;

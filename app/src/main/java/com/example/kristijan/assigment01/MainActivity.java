@@ -12,9 +12,8 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 /**
- * @class MainActivity
- * @author Kristijan Pajtasev
  * Activity used when starting application. Creates first database connection and sets list view.
+ * @author Kristijan Pajtasev
  */
 public class MainActivity extends Activity {
 
