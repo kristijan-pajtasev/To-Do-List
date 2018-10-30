@@ -9,7 +9,7 @@
             android:left="0px"
             android:right="0px"
             android:top="0px" />
-        <solid android:color="#FFCFD8DC" />
+        <solid android:color="@color/greyButton" />
     </shape>
 </item>
 <item
