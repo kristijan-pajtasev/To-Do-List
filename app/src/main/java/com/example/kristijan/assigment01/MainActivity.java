@@ -6,7 +6,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -20,6 +19,7 @@ public class MainActivity extends Activity {
     private ListView tasksList;
     private DBHelper dbHelper;
     private SQLiteDatabase sqLiteDatabase;
+    private Button pendingButton, completedButton;
     private String taskStatus = "PENDING";
 
     private OnClickListener addNewTaskListener = new OnClickListener() {
@@ -33,23 +33,31 @@ public class MainActivity extends Activity {
     private OnClickListener pendingTasksListener = new OnClickListener() {
         @Override
         public void onClick(View v) {
-            taskStatus = "PENDING";
-            setTasksList();
+            if(!taskStatus.equals("PENDING")) {
+                taskStatus = "PENDING";
+                pendingButton.setBackgroundResource(R.drawable.pending_button_selected);
+                completedButton.setBackgroundResource(R.drawable.completed_button);
+                setTasksList();
+            }
         }
     };
 
     private OnClickListener completedTasksListener = new OnClickListener() {
         @Override
         public void onClick(View v) {
-            taskStatus = "COMPLETED";
-            setTasksList();
+            if(!taskStatus.equals("COMPLETED")) {
+                taskStatus = "COMPLETED";
+                pendingButton.setBackgroundResource(R.drawable.pending_button);
+                completedButton.setBackgroundResource(R.drawable.completed_button_selected);
+                setTasksList();
+            }
         }
     };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.todo_main);
+        setContentView(R.layout.task_main);
 
         dbHelper = new DBHelper(this, "tasks.db", null, 1);
         sqLiteDatabase = dbHelper.getWritableDatabase();
@@ -60,8 +68,13 @@ public class MainActivity extends Activity {
         setTasksList();
 
         addNewButton.setOnClickListener(addNewTaskListener);
-        findViewById(R.id.pendingTasksButton).setOnClickListener(pendingTasksListener);
-        findViewById(R.id.completedTasksButton).setOnClickListener(completedTasksListener);
+
+        pendingButton = findViewById(R.id.pendingTasksButton);
+        pendingButton.setBackgroundResource(R.drawable.pending_button_selected);
+        pendingButton.setOnClickListener(pendingTasksListener);
+
+        completedButton = findViewById(R.id.completedTasksButton);
+        completedButton.setOnClickListener(completedTasksListener);
     }
 
     /**

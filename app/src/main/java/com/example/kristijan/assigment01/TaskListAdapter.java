@@ -54,7 +54,7 @@ public class TaskListAdapter extends BaseAdapter {
         if(convertView == null) {
             viewHolder = new ViewHolder();
             LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.todo_item, parent, false);
+            convertView = inflater.inflate(R.layout.task_item, parent, false);
             viewHolder.taskDescription = convertView.findViewById(R.id.taskDescription);
 
             TextView taskContent = convertView.findViewById(R.id.taskDescription);
