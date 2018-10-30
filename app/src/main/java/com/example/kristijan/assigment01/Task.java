@@ -7,10 +7,12 @@ package com.example.kristijan.assigment01;
 public class Task {
     private String text;
     private int id;
+    private boolean completed;
 
-    public Task(int id, String text) {
+    public Task(int id, String text, boolean completed) {
         this.text = text;
         this.id = id;
+        this.completed = completed;
     }
 
     public int getId() {
@@ -19,5 +21,9 @@ public class Task {
 
     public String getText() {
         return text;
+    }
+
+    public boolean isCompleted() {
+        return completed;
     }
 }

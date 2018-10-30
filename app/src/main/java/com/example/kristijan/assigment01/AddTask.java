@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 
 
@@ -16,6 +17,7 @@ import android.widget.EditText;
  */
 public class AddTask extends Activity {
     EditText taskContent;
+    CheckBox taskStatus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +29,7 @@ public class AddTask extends Activity {
         final SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
 
         taskContent = findViewById(R.id.taskContent);
+        taskStatus = findViewById(R.id.taskStatus);
         Button cancelButton = findViewById(R.id.cancelButton);
         Button saveButton = findViewById(R.id.saveButton);
 
@@ -43,7 +46,8 @@ public class AddTask extends Activity {
             public void onClick(View v) {
                 Log.i("ADD ACTIVITY: ", "Save new task");
                 String content = taskContent.getText().toString();
-                dbHelper.createTask(sqLiteDatabase, content);
+                int isCompleted = taskStatus.isChecked() ? 1 : 0;
+                dbHelper.createTask(sqLiteDatabase, content, isCompleted);
                 finish();
             }
         });

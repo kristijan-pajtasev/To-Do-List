@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 /**
  * Activity for editing existing task. Uses dbHelper for storing task into sqlite database.
@@ -15,6 +16,7 @@ import android.widget.EditText;
  */
 public class EditTask extends Activity {
     private EditText taskContent;
+    private CheckBox taskStatus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,10 +33,12 @@ public class EditTask extends Activity {
         Task task = dbHelper.getTask(sqLiteDatabase, id);
 
         taskContent = findViewById(R.id.taskContent);
+        taskStatus = findViewById(R.id.taskStatus);
         Button cancelButton = findViewById(R.id.cancelButton);
         Button saveButton = findViewById(R.id.saveButton);
 
         taskContent.setText(task.getText());
+        taskStatus.setChecked(task.isCompleted());
 
         cancelButton.setOnClickListener(new OnClickListener() {
             @Override
@@ -49,7 +53,8 @@ public class EditTask extends Activity {
             public void onClick(View v) {
                 Log.i("EDIT ACTIVITY: ", "Edit task");
                 String content = taskContent.getText().toString();
-                dbHelper.updateTask(sqLiteDatabase, id, content);
+                int isCompleted = taskStatus.isChecked() ? 1 : 0;
+                dbHelper.updateTask(sqLiteDatabase, id, content, isCompleted);
                 finish();
             }
         });
