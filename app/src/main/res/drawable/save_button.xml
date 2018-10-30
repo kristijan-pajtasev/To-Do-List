@@ -9,7 +9,7 @@
                 android:left="0px"
                 android:right="0px"
                 android:top="0px" />
-            <solid android:color="#FFDCEDC8" />
+            <solid android:color="@color/submitButtonBackground" />
         </shape>
     </item>
     <item

@@ -5,4 +5,5 @@
     <color name="colorAccent">#FF4081</color>
     <color name="greyButton">#CFD8DC</color>
     <color name="greyIcon">#333333</color>
+    <color name="submitButtonBackground">#FFDCEDC8</color>
 </resources>
