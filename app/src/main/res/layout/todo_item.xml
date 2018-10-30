@@ -12,6 +12,7 @@
         android:ellipsize="end"
         android:maxLines="1"
         android:padding="2sp"
+        android:gravity="center_vertical"
         android:scrollHorizontally="true"
         android:textSize="18sp" />
 
