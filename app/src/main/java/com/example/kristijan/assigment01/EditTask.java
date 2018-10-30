@@ -10,6 +10,8 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Toast;
+
 /**
  * Activity for editing existing task. Uses dbHelper for storing task into sqlite database.
  * @author Kristijan Pajtasev
@@ -17,6 +19,13 @@ import android.widget.EditText;
 public class EditTask extends Activity {
     private EditText taskContent, taskTitle;
     private CheckBox taskStatus;
+    String invalidInputMessage = "Title and description are required.";
+    String invalidTitleMessage = "Title needs to be unique.";
+
+    private void showToast(String message) {
+        final Toast toast = Toast.makeText(this, message, Toast.LENGTH_LONG);
+        toast.show();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,9 +65,14 @@ public class EditTask extends Activity {
                 Log.i("EDIT ACTIVITY: ", "Edit task");
                 String content = taskContent.getText().toString();
                 String title = taskTitle.getText().toString();
-                int isCompleted = taskStatus.isChecked() ? 1 : 0;
-                dbHelper.updateTask(sqLiteDatabase, id, title, content, isCompleted);
-                finish();
+                if(content.equals("") || title.equals("")) {
+                    showToast(invalidInputMessage);
+                } else {
+                    int isCompleted = taskStatus.isChecked() ? 1 : 0;
+                    boolean success = dbHelper.updateTask(sqLiteDatabase, id, title, content, isCompleted);
+                    if(success) finish();
+                    else showToast(invalidTitleMessage);
+                }
             }
         });
     }

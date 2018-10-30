@@ -9,6 +9,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Toast;
 
 
 /**
@@ -18,6 +19,13 @@ import android.widget.EditText;
 public class AddTask extends Activity {
     EditText taskContent, taskTitle;
     CheckBox taskStatus;
+    String invalidInputMessage = "Title and description are required.";
+    String invalidTitleMessage = "Title needs to be unique.";
+
+    private void showToast(String message) {
+        final Toast toast = Toast.makeText(this, message, Toast.LENGTH_LONG);
+        toast.show();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,9 +56,14 @@ public class AddTask extends Activity {
                 Log.i("ADD ACTIVITY: ", "Save new task");
                 String content = taskContent.getText().toString();
                 String title = taskTitle.getText().toString();
-                int isCompleted = taskStatus.isChecked() ? 1 : 0;
-                dbHelper.createTask(sqLiteDatabase, content, title, isCompleted);
-                finish();
+                if(content.equals("") || title.equals("")) {
+                    showToast(invalidInputMessage);
+                } else {
+                    int isCompleted = taskStatus.isChecked() ? 1 : 0;
+                    boolean success = dbHelper.createTask(sqLiteDatabase, content, title, isCompleted);
+                    if(success) finish();
+                    else showToast(invalidTitleMessage);
+                }
             }
         });
     }
