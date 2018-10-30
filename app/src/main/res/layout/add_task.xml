@@ -1,43 +1,59 @@
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/taskStatusContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Task completed:"
+            android:layout_weight="1" />
+        <CheckBox
+            android:id="@+id/taskStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0" />
+    </LinearLayout>
 
     <EditText
         android:id="@+id/taskContent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/taskStatusContainer"
+        android:layout_above="@id/addControls"
+        android:background="#FFFFFFA5"
         android:gravity="top|start"
         android:inputType="textMultiLine"
         android:padding="2sp"
-        android:layout_above="@id/addControls"
-        android:background="#FFFFFFA5"
         android:textSize="18sp" />
 
     <LinearLayout
         android:id="@+id/addControls"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_alignParentBottom="true"
-        >
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/cancelButton"
-            android:layout_weight="1"
             android:layout_width="wrap_content"
-            android:textColor="#FFFFFFFF"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:background="@drawable/new_cancel_button"
-            />
+            android:textColor="#FFFFFFFF" />
 
         <Button
             android:id="@+id/saveButton"
-            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:background="@drawable/new_button"
-            android:textColor="#FFFFFFFF"
-            />
+            android:textColor="#FFFFFFFF" />
     </LinearLayout>
 </RelativeLayout>
