@@ -8,14 +8,26 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
 
+/**
+ * @class DBHelper
+ * @author Kristijan Pajtasev
+ *
+ * Helper class for interaction with SQLite database.
+ */
 public class DBHelper extends SQLiteOpenHelper {
     final String CREATE_TABLE = "create table tasks(" +
             "id integer primary key autoincrement, " +
-            "description string," +
+            "task string," +
             "created datetime default current_timestamp" +
             ")";
     final String DROP_TABLE = "drop table tasks";
 
+    /**
+     * @param context
+     * @param name database name
+     * @param factory
+     * @param version
+     */
     public DBHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
@@ -31,6 +43,10 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE);
     }
 
+    /**
+     * @param sqLiteDatabase
+     * @return all tasks in format <code>ArrayList<Task></code>
+     */
     public ArrayList<Task> getTasks(SQLiteDatabase sqLiteDatabase) {
         Cursor cursor = sqLiteDatabase.rawQuery("select * from tasks order by created DESC",null);
 
@@ -42,25 +58,44 @@ public class DBHelper extends SQLiteOpenHelper {
         return tasks;
     }
 
-    public void createTask(SQLiteDatabase sqLiteDatabase, String description) {
+    /**
+     * @param sqLiteDatabase
+     * @param task
+     */
+    public void createTask(SQLiteDatabase sqLiteDatabase, String task) {
         ContentValues cv = new ContentValues();
-        cv.put("description", description);
+        cv.put("task", task);
         sqLiteDatabase.insert("tasks", null, cv);
     }
 
+    /**
+     * @param sqLiteDatabase
+     * @param id of task
+     * @return Task with given id
+     */
     public Task getTask(SQLiteDatabase sqLiteDatabase, String id) {
         Cursor cursor = sqLiteDatabase.rawQuery("select * from tasks where id=" + id,null);
         cursor.moveToFirst();
         return new Task(cursor.getInt(0),cursor.getString(1));
     }
 
-    public void updateTask(SQLiteDatabase sqLiteDatabase, String id, String description) {
-
+    /**
+     * @param sqLiteDatabase
+     * @param id
+     * @param task
+     * Updates Task with given id to task value
+     */
+    public void updateTask(SQLiteDatabase sqLiteDatabase, String id, String task) {
         ContentValues cv = new ContentValues();
-        cv.put("description", description);
+        cv.put("task", task);
         sqLiteDatabase.update("tasks", cv, "id="+ id, null);
     }
 
+    /**
+     * @param sqLiteDatabase
+     * @param id
+     * Deletes task from database with given id.
+     */
     public void deleteItem(SQLiteDatabase sqLiteDatabase, int id) {
         sqLiteDatabase.delete("tasks", "id="+ id, null);
     }

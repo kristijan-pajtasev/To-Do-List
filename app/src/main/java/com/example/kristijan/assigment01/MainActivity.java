@@ -11,7 +11,11 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.ArrayList;
-
+/**
+ * @class MainActivity
+ * @author Kristijan Pajtasev
+ * Activity used when starting application. Creates first database connection and sets list view.
+ */
 public class MainActivity extends Activity {
 
     private ListView tasksList;
@@ -43,8 +47,10 @@ public class MainActivity extends Activity {
 
     }
 
+    /**
+     * Fetches tasks from database and re-initializes task list.
+     */
     private void setTasksList() {
-
         final ArrayList<Task> tasks =  dbHelper.getTasks(sqLiteDatabase);
         TaskListAdapter taskListAdapter = new TaskListAdapter(this, tasks);
         tasksList.setAdapter(taskListAdapter);

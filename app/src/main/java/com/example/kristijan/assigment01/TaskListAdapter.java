@@ -15,6 +15,11 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+/**
+ * @class TaskListAdapter
+ * @author Kristijan Pajtasev
+ * Extends BaseAdapter. Used for populating tasks list view.
+ */
 public class TaskListAdapter extends BaseAdapter {
     private ArrayList<Task> tasks;
     private Context context;

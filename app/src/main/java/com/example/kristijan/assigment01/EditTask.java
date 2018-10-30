@@ -9,7 +9,11 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
-
+/**
+ * @class EditTask
+ * @author Kristijan Pajtasev
+ * Activity for editing existing task. Uses dbHelper for storing task into sqlite database.
+ */
 public class EditTask extends Activity {
     private EditText taskContent;
 
