@@ -16,7 +16,7 @@ import android.widget.EditText;
  * @author Kristijan Pajtasev
  */
 public class AddTask extends Activity {
-    EditText taskContent;
+    EditText taskContent, taskTitle;
     CheckBox taskStatus;
 
     @Override
@@ -29,6 +29,7 @@ public class AddTask extends Activity {
         final SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
 
         taskContent = findViewById(R.id.taskContent);
+        taskTitle = findViewById(R.id.taskTitle);
         taskStatus = findViewById(R.id.taskStatus);
         Button cancelButton = findViewById(R.id.cancelButton);
         Button saveButton = findViewById(R.id.saveButton);
@@ -46,8 +47,9 @@ public class AddTask extends Activity {
             public void onClick(View v) {
                 Log.i("ADD ACTIVITY: ", "Save new task");
                 String content = taskContent.getText().toString();
+                String title = taskTitle.getText().toString();
                 int isCompleted = taskStatus.isChecked() ? 1 : 0;
-                dbHelper.createTask(sqLiteDatabase, content, isCompleted);
+                dbHelper.createTask(sqLiteDatabase, content, title, isCompleted);
                 finish();
             }
         });

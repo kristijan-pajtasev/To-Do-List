@@ -7,4 +7,5 @@
     <color name="selectedButton">#90CAF9</color>
     <color name="greyIcon">#333333</color>
     <color name="submitButtonBackground">#FFDCEDC8</color>
+    <color name="taskContentBackground">#F5F5F5</color>
 </resources>

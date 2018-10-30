@@ -7,31 +7,45 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:padding="2sp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="2sp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="@string/taskCompleted"
-            android:textSize="18sp"
-            android:layout_weight="1" />
+            android:textSize="18sp" />
+
         <CheckBox
             android:id="@+id/taskStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:layout_weight="0" />
+            android:layout_weight="0"
+            android:textSize="18sp" />
     </LinearLayout>
+
+    <EditText
+        android:id="@+id/taskTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/taskStatusContainer"
+        android:background="@color/taskContentBackground"
+        android:hint="@string/taskTitlePlaceholder"
+        android:maxLines="1"
+        android:layout_marginBottom="2sp"
+        android:padding="2sp"
+        android:textSize="18sp" />
 
     <EditText
         android:id="@+id/taskContent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/taskStatusContainer"
         android:layout_above="@id/addControls"
-        android:background="#FFFFFFA5"
+        android:layout_below="@id/taskTitle"
+        android:background="@color/taskContentBackground"
         android:gravity="top|start"
+        android:hint="@string/taskDescriptionPlaceholder"
         android:inputType="textMultiLine"
         android:padding="2sp"
         android:textSize="18sp" />

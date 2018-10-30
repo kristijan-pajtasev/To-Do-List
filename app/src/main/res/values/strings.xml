@@ -8,4 +8,6 @@
     <string name="no">No</string>
     <string name="delete">Delete</string>
     <string name="taskCompleted">Task completed:</string>
+    <string name="taskTitlePlaceholder">Task title:</string>
+    <string name="taskDescriptionPlaceholder">Task description:</string>
 </resources>

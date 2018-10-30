@@ -15,6 +15,7 @@ import java.util.ArrayList;
 public class DBHelper extends SQLiteOpenHelper {
     final String CREATE_TABLE = "create table tasks(" +
             "id integer primary key autoincrement, " +
+            "title string unique," +
             "task string," +
             "completed integer default 0," +
             "created datetime default current_timestamp" +
@@ -76,10 +77,11 @@ public class DBHelper extends SQLiteOpenHelper {
      * @param sqLiteDatabase
      * @param task
      */
-    public void createTask(SQLiteDatabase sqLiteDatabase, String task, int isCompleted) {
+    public void createTask(SQLiteDatabase sqLiteDatabase, String task, String title, int isCompleted) {
         ContentValues cv = new ContentValues();
         cv.put("task", task);
         cv.put("completed", isCompleted);
+        cv.put("title", title);
         sqLiteDatabase.insert("tasks", null, cv);
     }
 
@@ -100,10 +102,11 @@ public class DBHelper extends SQLiteOpenHelper {
      * @param task
      * Updates Task with given id to task value
      */
-    public void updateTask(SQLiteDatabase sqLiteDatabase, String id, String task, int completed) {
+    public void updateTask(SQLiteDatabase sqLiteDatabase, String id, String title, String task, int completed) {
         ContentValues cv = new ContentValues();
         cv.put("task", task);
         cv.put("completed", completed);
+        cv.put("title", title);
         sqLiteDatabase.update("tasks", cv, "id="+ id, null);
     }
 
@@ -124,6 +127,7 @@ public class DBHelper extends SQLiteOpenHelper {
         return new Task(
                 cursor.getInt(0),
                 cursor.getString(1),
-                cursor.getInt(2) == 1);
+                cursor.getString(2),
+                cursor.getInt(3) == 1);
     }
 }
