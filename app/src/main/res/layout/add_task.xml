@@ -12,7 +12,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Task completed:"
+            android:text="@string/taskCompleted"
             android:layout_weight="1" />
         <CheckBox
             android:id="@+id/taskStatus"
@@ -45,15 +45,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/new_cancel_button"
-            android:textColor="#FFFFFFFF" />
+            android:background="@drawable/new_cancel_button" />
 
         <Button
             android:id="@+id/saveButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/new_button"
-            android:textColor="#FFFFFFFF" />
+            android:background="@drawable/new_button" />
     </LinearLayout>
 </RelativeLayout>
