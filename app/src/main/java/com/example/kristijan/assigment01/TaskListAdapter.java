@@ -88,7 +88,7 @@ public class TaskListAdapter extends BaseAdapter {
             viewHolder = (ViewHolder)convertView.getTag();
         }
 
-        viewHolder.taskDescription.setText(tasks.get(position).getText());
+        viewHolder.taskDescription.setText(tasks.get(position).getTitle());
 
         return convertView;
     }
